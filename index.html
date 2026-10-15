@@ -3,141 +3,136 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#070b1b">
-<title>My Little Universe ✦</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08091b">
+<title>My Little Universe ✨</title>
 
 <style>
 :root {
-  color-scheme: dark;
-  --bg: #070b1b;
-  --panel: #10172d;
-  --text: #f5f3ff;
-  --muted: #b8c3e4;
-  --border: #293456;
-  --accent: #b18aff;
-  --accent2: #65caff;
+  --bg:#08091b; --panel:#13152d; --text:#f6f2ff;
+  --muted:#b9b9dc; --border:#33345c; --accent:#c39bff;
+  --field:#0b0d22;
 }
 body.light {
-  color-scheme: light;
-  --bg: #f3f2ff;
-  --panel: #ffffff;
-  --text: #191631;
-  --muted: #5c607c;
-  --border: #d8d4ef;
-  --accent: #7040cf;
-  --accent2: #1766bb;
+  --bg:#f3f1ff; --panel:#fff; --text:#201b3b;
+  --muted:#66627e; --border:#ded8f2; --accent:#7040cf;
+  --field:#f8f6ff;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
 body {
-  font-family: system-ui, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  transition: background .3s, color .3s;
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:system-ui,Arial,sans-serif; line-height:1.65;
+  transition:background .25s,color .25s;
 }
-a { color: inherit; }
-button { font: inherit; cursor: pointer; }
+button,input,textarea { font:inherit; }
+button,a { -webkit-tap-highlight-color:transparent; }
+a { color:var(--accent); }
+button { cursor:pointer; }
 header {
-  position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; flex-wrap: wrap;
-  padding: 15px 7%;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
+  position:sticky; top:0; z-index:5; padding:14px 6%;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px; flex-wrap:wrap; background:var(--bg);
+  border-bottom:1px solid var(--border);
 }
-.logo { font-size: 21px; font-weight: 800; color: var(--accent); }
-nav { display: flex; gap: 17px; flex-wrap: wrap; align-items: center; }
-nav a { text-decoration: none; color: var(--muted); }
-nav a:hover { color: var(--accent); }
-.theme-btn, .small-btn {
-  border: 1px solid var(--border); border-radius: 22px;
-  padding: 7px 13px; background: var(--panel); color: var(--text);
+.logo { color:var(--accent); font-weight:800; font-size:20px; }
+nav { display:flex; align-items:center; gap:13px; flex-wrap:wrap; }
+nav a { color:var(--muted); text-decoration:none; }
+nav a:hover { color:var(--accent); }
+.btn {
+  border:0; border-radius:24px; padding:10px 18px;
+  color:white; background:linear-gradient(100deg,#7040cf,#a855f7);
+  text-decoration:none; display:inline-block; margin:4px 3px;
+}
+.btn.secondary,.outline {
+  color:var(--text); background:var(--panel);
+  border:1px solid var(--border);
 }
 .hero {
-  min-height: 490px; display: flex; align-items: center;
-  padding: 75px 9%; position: relative; overflow: hidden;
-  background:
-    radial-gradient(ellipse at 80% 65%, #4b238c77, transparent 35%),
-    radial-gradient(ellipse at 20% 25%, #174ca955, transparent 42%),
-    var(--bg);
+  min-height:410px; display:flex; align-items:center;
+  padding:70px 9%; position:relative; overflow:hidden;
+  background:radial-gradient(ellipse at 80% 60%,#572c9c88,transparent 36%),
+  radial-gradient(ellipse at 15% 15%,#174b9580,transparent 45%),var(--bg);
 }
-#stars { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.star {
-  position: absolute; background: #fff; border-radius: 50%;
-  animation: twinkle 2.5s infinite alternate;
+#stars { position:absolute; inset:0; pointer-events:none; }
+.star-dot {
+  position:absolute; width:3px; height:3px; border-radius:50%;
+  background:white; animation:twinkle 2s infinite alternate;
 }
-@keyframes twinkle { from { opacity: .2; transform: scale(.7); }
-  to { opacity: 1; transform: scale(1.4); } }
+@keyframes twinkle { to { opacity:.2; transform:scale(1.7); } }
 .planet {
-  position: absolute; right: 12%; top: 23%;
-  font-size: clamp(90px, 15vw, 170px);
-  animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 25px #8060ff66);
+  position:absolute; right:12%; top:16%; font-size:clamp(90px,16vw,160px);
+  animation:float 5s ease-in-out infinite;
 }
-@keyframes float { 0%,100% { transform: translateY(0) rotate(-8deg); }
-  50% { transform: translateY(-18px) rotate(8deg); } }
-.hero-content { position: relative; z-index: 1; max-width: 650px; }
-.eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 2px; }
-h1 { font-size: clamp(43px, 8vw, 78px); line-height: 1.1; margin: 15px 0; }
+@keyframes float { 50% { transform:translateY(-16px) rotate(8deg); } }
+.hero-content { position:relative; max-width:660px; }
+h1 { font-size:clamp(42px,8vw,75px); line-height:1.1; margin:12px 0; }
 .gradient {
-  background: linear-gradient(90deg, #71c5ff, #c084fc);
-  background-clip: text; -webkit-background-clip: text; color: transparent;
+  background:linear-gradient(90deg,#71c5ff,#c084fc);
+  background-clip:text; -webkit-background-clip:text; color:transparent;
 }
-.lead { max-width: 490px; color: var(--muted); font-size: 18px; margin-bottom: 25px; }
-.button {
-  display: inline-block; text-decoration: none; border: 0;
-  border-radius: 28px; padding: 12px 22px; margin: 4px 7px 4px 0;
-  color: white; background: linear-gradient(100deg, #7040cf, #a855f7);
-  transition: transform .2s, box-shadow .2s;
-}
-.button:hover { transform: translateY(-3px); box-shadow: 0 0 22px #9867ff66; }
-.button.secondary { background: var(--panel); border: 1px solid var(--border); color: var(--text); }
-.clock {
-  display: inline-block; margin-top: 22px; padding: 9px 15px;
-  border: 1px solid var(--border); border-radius: 14px;
-  color: var(--muted); background: var(--panel);
-}
-section { padding: 65px 8%; }
-.section-title { text-align: center; font-size: clamp(27px, 4vw, 36px); }
-.section-intro { text-align: center; color: var(--muted); margin: 8px 0 30px; }
-.cards {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
-  gap: 20px;
+.muted { color:var(--muted); }
+section { padding:55px 7%; }
+.heading { text-align:center; font-size:clamp(27px,4vw,36px); margin:0; }
+.subheading { text-align:center; color:var(--muted); margin:8px 0 28px; }
+.grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
 }
 .card {
-  padding: 24px; border-radius: 20px; border: 1px solid var(--border);
-  background: var(--panel); transition: transform .25s, border-color .25s;
+  background:var(--panel); border:1px solid var(--border);
+  border-radius:18px; padding:22px; min-width:0;
 }
-.card:hover { transform: translateY(-5px); border-color: var(--accent); }
-.icon { font-size: 34px; }
-.card h3 { margin: 8px 0; }
-.card p { color: var(--muted); margin-bottom: 14px; }
-.card a { color: var(--accent2); text-decoration: none; font-weight: 650; }
-.tag {
-  display: inline-block; padding: 3px 9px; border-radius: 15px;
-  background: var(--bg); color: var(--accent); font-size: 12px; margin: 3px 3px 8px 0;
+.card h3 { margin:6px 0; }
+.card p { color:var(--muted); }
+.big-icon { font-size:32px; }
+.about { background:var(--panel); text-align:center; }
+.about p { max-width:650px; margin:14px auto; color:var(--muted); }
+input,textarea {
+  width:100%; padding:11px 12px; color:var(--text);
+  background:var(--field); border:1px solid var(--border);
+  border-radius:10px; margin:6px 0 12px;
 }
-.about { text-align: center; background: var(--panel); }
-.about p { max-width: 650px; color: var(--muted); margin: 15px auto 22px; }
-.contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
-footer { text-align: center; color: var(--muted); padding: 25px; border-top: 1px solid var(--border); }
+textarea { min-height:110px; resize:vertical; }
+label { display:block; font-weight:600; }
+input[type="range"] { padding:0; }
+audio { width:100%; margin:12px 0; }
+.game-area {
+  position:relative; overflow:hidden; height:260px; margin:16px 0;
+  border:1px solid #55518a; border-radius:16px;
+  background:radial-gradient(ellipse at center,#27205c,#08091b);
+}
+.game-star {
+  position:absolute; border:0; background:transparent; color:white;
+  font-size:30px; line-height:1; padding:8px;
+  filter:drop-shadow(0 0 8px #d3b0ff);
+}
+.game-star:focus-visible { outline:2px solid white; border-radius:50%; }
+.entry {
+  border:1px solid var(--border); border-radius:12px;
+  padding:14px; margin-top:12px; overflow-wrap:anywhere;
+}
+.entry p { white-space:pre-wrap; }
+.entry time { color:var(--muted); font-size:13px; }
+footer {
+  text-align:center; padding:25px; border-top:1px solid var(--border);
+  color:var(--muted);
+}
 #topBtn {
-  position: fixed; bottom: 20px; right: 20px; z-index: 5;
-  display: none; border: 0; border-radius: 50%; padding: 12px 16px;
-  color: white; background: #7040cf;
+  position:fixed; right:16px; bottom:16px; display:none;
+  border:0; border-radius:50%; padding:12px 16px;
+  background:#7040cf; color:white; z-index:6;
 }
-@media (max-width: 650px) {
-  header { padding: 14px 5%; }
-  nav { gap: 12px; }
-  .hero { padding: 65px 6%; }
-  .planet { right: 2%; top: 8%; opacity: .45; }
-  section { padding: 48px 6%; }
+.status { min-height:28px; color:var(--accent); overflow-wrap:anywhere; }
+@media(max-width:600px) {
+  header { padding:12px 4%; }
+  nav { gap:9px; }
+  .hero { padding:65px 6%; }
+  .planet { right:2%; opacity:.45; }
+  section { padding:42px 5%; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .01ms !important;
-    scroll-behavior: auto !important; transition-duration: .01ms !important; }
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation:none!important; scroll-behavior:auto!important; }
 }
 </style>
 </head>
@@ -147,11 +142,11 @@ footer { text-align: center; color: var(--muted); padding: 25px; border-top: 1px
   <a class="logo" href="#home" style="text-decoration:none">🪐 My Little Universe</a>
   <nav aria-label="Main navigation">
     <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch color theme">☀️ Light</button>
+    <a href="#music">Music</a>
+    <a href="#game">Game</a>
+    <a href="#journal">Journal</a>
+    <button class="btn secondary" id="themeBtn" type="button">☀️ Light</button>
   </nav>
 </header>
 
@@ -160,187 +155,408 @@ footer { text-align: center; color: var(--muted); padding: 25px; border-top: 1px
     <div id="stars" aria-hidden="true"></div>
     <div class="planet" aria-hidden="true">🪐</div>
     <div class="hero-content">
-      <p class="eyebrow">✦ WELCOME, EXPLORER ✦</p>
+      <p style="color:var(--accent)">✦ WELCOME, EXPLORER ✦</p>
       <h1>My Little<br><span class="gradient">Universe ✨</span></h1>
-      <p class="lead">
-        A small space for big dreams, creative ideas,
-        coding adventures and endless possibilities.
-      </p>
-      <a class="button" href="#projects">Explore my projects →</a>
-      <button class="button secondary" id="helloBtn" type="button">Send a little magic ✨</button>
-      <div><time class="clock" id="clock">Loading your universe's time...</time></div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <h2 class="section-title">Explore Your Universe 🌠</h2>
-    <p class="section-intro">Every new skill opens another door.</p>
-    <div class="cards">
-      <article class="card">
-        <div class="icon">📚</div><h3>Learn</h3>
-        <p>Explore new ideas, learn new topics and keep growing.</p>
-        <a href="#about">Discover more →</a>
-      </article>
-      <article class="card">
-        <div class="icon">💻</div><h3>Code</h3>
-        <p>Learn HTML, CSS and JavaScript by building real things.</p>
-        <a href="#projects">See projects →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🎨</div><h3>Create</h3>
-        <p>Turn imagination into designs, stories and experiments.</p>
-        <a href="#projects">Get inspired →</a>
-      </article>
-      <article class="card">
-        <div class="icon">🌱</div><h3>Grow</h3>
-        <p>Make progress at your own pace. Every step counts.</p>
-        <a href="#about">My journey →</a>
-      </article>
+      <p class="muted">A little corner of the cosmos for learning, creating, playing and dreaming.</p>
+      <a class="btn" href="#projects">Explore the universe →</a>
+      <div class="card" style="display:inline-block;margin-top:18px">
+        <strong>🕒 Local time</strong>
+        <div id="clock" aria-live="off">Loading...</div>
+      </div>
     </div>
   </section>
 
   <section id="projects">
-    <h2 class="section-title">My Project Galaxy 💫</h2>
-    <p class="section-intro">A collection of things I'm learning to create.</p>
-    <div class="cards">
+    <h2 class="heading">My Project Galaxy 💫</h2>
+    <p class="subheading">Explore the little things I'm building.</p>
+    <div class="grid">
       <article class="card">
-        <div class="icon">🌌</div><h3>My Little Universe</h3>
-        <span class="tag">HTML</span><span class="tag">CSS</span>
-        <p>A personal space website with a cosmic theme.</p>
-        <a href="#home">Visit this page ↑</a>
+        <div class="big-icon">🌌</div>
+        <h3>My Website</h3>
+        <p>A personal cosmic website made with HTML, CSS and JavaScript.</p>
+        <a href="#home">Visit home ↑</a>
       </article>
       <article class="card">
-        <div class="icon">⏰</div><h3>Live Clock</h3>
-        <span class="tag">JavaScript</span>
-        <p>A clock that updates every second using your device's time.</p>
-        <a href="#home">See the clock ↑</a>
+        <div class="big-icon">⭐</div>
+        <h3>Star Collector</h3>
+        <p>A tiny game where each star you tap adds to your score.</p>
+        <a href="#game">Play the game →</a>
       </article>
       <article class="card">
-        <div class="icon">💡</div><h3>Next Big Idea</h3>
-        <span class="tag">Coming soon</span>
-        <p>Replace this card with your next website or coding project.</p>
-        <a href="#contact">Share an idea ↓</a>
+        <div class="big-icon">📔</div>
+        <h3>Space Journal</h3>
+        <p>A personal place to save your thoughts in this browser.</p>
+        <a href="#journal">Write an entry →</a>
       </article>
     </div>
-    <p style="text-align:center;color:var(--muted);margin-top:24px">
-      Tip: Edit these cards whenever you complete a new project.
-    </p>
+  </section>
+
+  <section id="music">
+    <h2 class="heading">Cosmic Music 🎵</h2>
+    <p class="subheading">Bring a little calm to your corner of space.</p>
+    <div class="card" style="max-width:650px;margin:auto">
+      <div class="big-icon">🌙 🎧 ✨</div>
+      <h3>Choose your space soundtrack</h3>
+      <p class="muted">Choose an audio file on your device. The player will play it without uploading it to this website.</p>
+      <label for="audioFile">Choose an audio file</label>
+      <input id="audioFile" type="file" accept="audio/*">
+      <audio id="audioPlayer" controls preload="metadata">
+        Your browser does not support audio playback.
+      </audio>
+      <label for="volume">Volume</label>
+      <input id="volume" type="range" min="0" max="1" step=".05" value=".6">
+      <button class="btn secondary" id="stopMusic" type="button">Stop music</button>
+      <p class="status" id="musicStatus" role="status">Select an audio file to begin.</p>
+    </div>
+  </section>
+
+  <section id="game">
+    <h2 class="heading">Star Collector ⭐</h2>
+    <p class="subheading">Collect as many stars as you can in 20 seconds!</p>
+    <div class="card" style="max-width:650px;margin:auto">
+      <div class="grid">
+        <div><strong>Score</strong><div id="score" aria-live="polite">0</div></div>
+        <div><strong>Time left</strong><div id="timeLeft">20 seconds</div></div>
+        <div><strong>Best score</strong><div id="bestScore">0</div></div>
+      </div>
+      <div class="game-area" id="gameArea" aria-label="Star collecting play area">
+        <p id="gameHint" style="text-align:center;padding:35px 12px;color:#ddd8ff">
+          Press Start, then tap the stars as they appear!
+        </p>
+      </div>
+      <button class="btn" id="startGame" type="button">🚀 Start game</button>
+      <p class="status" id="gameStatus" role="status">Ready for launch?</p>
+    </div>
+  </section>
+
+  <section id="journal">
+    <h2 class="heading">My Space Journal 📔</h2>
+    <p class="subheading">A little place for thoughts, ideas and discoveries.</p>
+    <div class="card" style="max-width:700px;margin:auto">
+      <form id="journalForm">
+        <label for="entryTitle">Entry title</label>
+        <input id="entryTitle" maxlength="80" required placeholder="Today's little discovery...">
+        <label for="entryText">Your note</label>
+        <textarea id="entryText" maxlength="5000" required placeholder="Write about your day, ideas, or what you learned..."></textarea>
+        <button class="btn" type="submit" id="saveEntry">💜 Save entry</button>
+        <button class="btn secondary" type="button" id="cancelEdit" hidden>Cancel edit</button>
+      </form>
+      <p class="muted">Entries are stored only in this browser on this device. Clearing site data or using another browser may remove or hide them. This is not a secure private diary.</p>
+      <p class="status" id="journalStatus" role="status"></p>
+      <h3>Your entries ✨</h3>
+      <div id="entries"></div>
+    </div>
   </section>
 
   <section class="about" id="about">
-    <h2 class="section-title">A Little About Me 🌙</h2>
-    <p>
-      I'm an explorer of ideas, creativity and technology.
-      This website is my corner of the internet to practise coding,
-      share projects and celebrate what I learn along the way.
-    </p>
-    <a class="button" href="#projects">Explore my work 🚀</a>
-  </section>
-
-  <section id="contact">
-    <h2 class="section-title">Let's Connect ✨</h2>
-    <p class="section-intro">Have an idea? Make this space your own.</p>
-    <div class="contact-links">
-      <button class="button" type="button" id="ideaBtn">Give me an idea 💡</button>
-      <a class="button secondary" href="#home">Back to the stars ↑</a>
-    </div>
-    <p id="message" role="status" aria-live="polite"
-       style="text-align:center;margin-top:20px;color:var(--accent)"></p>
+    <h2 class="heading">Keep Exploring 🌠</h2>
+    <p>Every star represents something new you learn. Keep experimenting, keep creating, and make this universe your own.</p>
+    <a class="btn" href="#home">Back to the stars ↑</a>
   </section>
 </main>
 
-<footer>
-  ✦ A little progress each day leads to big results. ✦
-  <p>Made with 💜, curiosity and code.</p>
-</footer>
-
+<footer>✨ Made with curiosity and code. ✨<br>My Little Universe</footer>
 <button id="topBtn" type="button" aria-label="Back to top">↑</button>
 
 <script>
-const body = document.body;
-const themeBtn = document.getElementById("themeBtn");
+"use strict";
 
-// Restore the selected theme when possible.
-try {
-  if (localStorage.getItem("universe-theme") === "light") {
-    body.classList.add("light");
-  }
-} catch (error) {}
-
-function updateThemeButton() {
-  const light = body.classList.contains("light");
-  themeBtn.textContent = light ? "🌙 Dark" : "☀️ Light";
-  themeBtn.setAttribute("aria-pressed", String(light));
-}
-updateThemeButton();
-
-themeBtn.addEventListener("click", () => {
-  body.classList.toggle("light");
-  updateThemeButton();
+// Safe storage helpers: the website still works if storage is unavailable.
+function readStorage(key, fallback) {
   try {
-    localStorage.setItem(
-      "universe-theme",
-      body.classList.contains("light") ? "light" : "dark"
-    );
-  } catch (error) {}
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : value;
+  } catch (e) {
+    return fallback;
+  }
+}
+function writeStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+// Theme switcher
+const themeBtn = document.getElementById("themeBtn");
+if (readStorage("universe-theme", "dark") === "light") {
+  document.body.classList.add("light");
+}
+function updateThemeLabel() {
+  themeBtn.textContent = document.body.classList.contains("light")
+    ? "🌙 Dark" : "☀️ Light";
+}
+updateThemeLabel();
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  updateThemeLabel();
+  writeStorage("universe-theme",
+    document.body.classList.contains("light") ? "light" : "dark");
 });
 
-// Create a star field without any extra libraries.
-const starField = document.getElementById("stars");
-for (let i = 0; i < 75; i++) {
+// Animated star background
+const stars = document.getElementById("stars");
+for (let i = 0; i < 85; i++) {
   const star = document.createElement("span");
-  star.className = "star";
-  const size = Math.random() * 3 + 1;
-  star.style.width = size + "px";
-  star.style.height = size + "px";
+  star.className = "star-dot";
   star.style.left = Math.random() * 100 + "%";
   star.style.top = Math.random() * 100 + "%";
+  star.style.opacity = String(.3 + Math.random() * .7);
   star.style.animationDelay = Math.random() * 3 + "s";
-  star.style.animationDuration = (1.5 + Math.random() * 3) + "s";
-  starField.appendChild(star);
+  stars.appendChild(star);
 }
 
-// Live clock in the visitor's local time zone.
-const clock = document.getElementById("clock");
+// Live local clock
 function updateClock() {
-  const now = new Date();
-  clock.textContent = "🕒 " + now.toLocaleTimeString([], {
-    hour: "2-digit", minute: "2-digit", second: "2-digit"
-  }) + "  ·  " + now.toLocaleDateString([], {
-    weekday: "short", month: "short", day: "numeric"
-  });
-  clock.dateTime = now.toISOString();
+  document.getElementById("clock").textContent =
+    new Date().toLocaleString([], {
+      weekday: "short", hour: "2-digit", minute: "2-digit",
+      second: "2-digit", month: "short", day: "numeric"
+    });
 }
 updateClock();
 setInterval(updateClock, 1000);
 
-// Friendly interactive buttons.
-const message = document.getElementById("message");
-document.getElementById("helloBtn").addEventListener("click", () => {
-  message.textContent = "✨ Welcome, explorer! Your next idea could be amazing.";
-  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+// Cosmic music player: user selects a local audio file
+const audioFile = document.getElementById("audioFile");
+const audio = document.getElementById("audioPlayer");
+const musicStatus = document.getElementById("musicStatus");
+let audioURL = null;
+
+audioFile.addEventListener("change", () => {
+  if (audioURL) URL.revokeObjectURL(audioURL);
+  audio.pause();
+  const file = audioFile.files[0];
+  if (!file) {
+    audio.removeAttribute("src");
+    musicStatus.textContent = "Select an audio file to begin.";
+    return;
+  }
+  if (!file.type.startsWith("audio/")) {
+    audioFile.value = "";
+    musicStatus.textContent = "Please choose a valid audio file.";
+    return;
+  }
+  audioURL = URL.createObjectURL(file);
+  audio.src = audioURL;
+  audio.volume = Number(document.getElementById("volume").value);
+  musicStatus.textContent = "Ready! Press Play in the player.";
+});
+document.getElementById("volume").addEventListener("input", e => {
+  audio.volume = Number(e.target.value);
+});
+document.getElementById("stopMusic").addEventListener("click", () => {
+  audio.pause();
+  audio.currentTime = 0;
+  musicStatus.textContent = "Music stopped.";
+});
+audio.addEventListener("error", () => {
+  musicStatus.textContent = "This file could not be played. Try another audio file.";
 });
 
-const ideas = [
-  "💡 Idea: Build a mini quiz game with JavaScript!",
-  "💡 Idea: Create a page about your favourite books or hobbies.",
-  "💡 Idea: Make a digital journal with colourful cards.",
-  "💡 Idea: Build a constellation map with clickable stars.",
-  "💡 Idea: Create a study timetable with checkboxes."
-];
-let ideaIndex = 0;
-document.getElementById("ideaBtn").addEventListener("click", () => {
-  message.textContent = ideas[ideaIndex];
-  ideaIndex = (ideaIndex + 1) % ideas.length;
+// Star collecting game
+const gameArea = document.getElementById("gameArea");
+const scoreDisplay = document.getElementById("score");
+const timeDisplay = document.getElementById("timeLeft");
+const bestDisplay = document.getElementById("bestScore");
+const gameStatus = document.getElementById("gameStatus");
+const gameHint = document.getElementById("gameHint");
+let score = 0;
+let seconds = 20;
+let running = false;
+let gameTimer = null;
+let best = Number(readStorage("universe-best", "0")) || 0;
+bestDisplay.textContent = best;
+
+function placeStar() {
+  gameArea.querySelectorAll(".game-star").forEach(el => el.remove());
+  const star = document.createElement("button");
+  star.type = "button";
+  star.className = "game-star";
+  star.textContent = "⭐";
+  star.setAttribute("aria-label", "Collect star");
+  const maxX = Math.max(0, gameArea.clientWidth - 55);
+  const maxY = Math.max(0, gameArea.clientHeight - 55);
+  star.style.left = Math.random() * maxX + "px";
+  star.style.top = Math.random() * maxY + "px";
+  star.addEventListener("click", () => {
+    if (!running) return;
+    score++;
+    scoreDisplay.textContent = score;
+    placeStar();
+  });
+  gameArea.appendChild(star);
+}
+
+function endGame() {
+  running = false;
+  clearInterval(gameTimer);
+  gameTimer = null;
+  gameArea.querySelectorAll(".game-star").forEach(el => el.remove());
+  gameHint.hidden = false;
+  gameHint.textContent = "✨ Mission complete! You collected " + score + " stars!";
+  gameStatus.textContent = "Game over! Press Play Again to try again.";
+  document.getElementById("startGame").textContent = "🔁 Play again";
+  if (score > best) {
+    best = score;
+    bestDisplay.textContent = best;
+    writeStorage("universe-best", String(best));
+    gameStatus.textContent = "New high score! You collected " + score + " stars! 🎉";
+  }
+}
+
+document.getElementById("startGame").addEventListener("click", () => {
+  clearInterval(gameTimer);
+  score = 0;
+  seconds = 20;
+  running = true;
+  scoreDisplay.textContent = score;
+  timeDisplay.textContent = seconds + " seconds";
+  gameHint.hidden = true;
+  gameStatus.textContent = "Go! Tap the star!";
+  document.getElementById("startGame").textContent = "Restart game";
+  placeStar();
+  gameTimer = setInterval(() => {
+    seconds--;
+    timeDisplay.textContent = seconds + " seconds";
+    if (seconds <= 0) endGame();
+  }, 1000);
 });
 
-// Show a back-to-top button after scrolling.
+// Personal journal
+const journalForm = document.getElementById("journalForm");
+const titleInput = document.getElementById("entryTitle");
+const textInput = document.getElementById("entryText");
+const entriesBox = document.getElementById("entries");
+const journalStatus = document.getElementById("journalStatus");
+const cancelEdit = document.getElementById("cancelEdit");
+let entries = [];
+let editingId = null;
+let storageAvailable = true;
+
+try {
+  const saved = localStorage.getItem("universe-journal");
+  entries = saved ? JSON.parse(saved) : [];
+  if (!Array.isArray(entries)) entries = [];
+} catch (e) {
+  entries = [];
+  storageAvailable = false;
+}
+entries = entries.filter(e =>
+  e && typeof e.id === "string" &&
+  typeof e.title === "string" && typeof e.text === "string"
+);
+
+function saveEntries() {
+  storageAvailable = writeStorage("universe-journal", JSON.stringify(entries));
+  if (!storageAvailable) {
+    journalStatus.textContent =
+      "Browser storage is unavailable. Your latest change may not be saved.";
+  }
+}
+
+function renderEntries() {
+  entriesBox.replaceChildren();
+  if (entries.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "muted";
+    empty.textContent = "No entries yet. Write your first little discovery above!";
+    entriesBox.appendChild(empty);
+    return;
+  }
+  [...entries].reverse().forEach(entry => {
+    const card = document.createElement("article");
+    card.className = "entry";
+    const heading = document.createElement("h4");
+    heading.textContent = entry.title;
+    const date = document.createElement("time");
+    date.textContent = entry.date;
+    const content = document.createElement("p");
+    content.textContent = entry.text;
+
+    const edit = document.createElement("button");
+    edit.className = "btn secondary";
+    edit.type = "button";
+    edit.textContent = "Edit";
+    edit.addEventListener("click", () => {
+      editingId = entry.id;
+      titleInput.value = entry.title;
+      textInput.value = entry.text;
+      document.getElementById("saveEntry").textContent = "Save changes";
+      cancelEdit.hidden = false;
+      titleInput.focus();
+      journalStatus.textContent = "Editing entry.";
+    });
+
+    const remove = document.createElement("button");
+    remove.className = "btn secondary";
+    remove.type = "button";
+    remove.textContent = "Delete";
+    remove.addEventListener("click", () => {
+      if (!confirm("Delete this journal entry?")) return;
+      entries = entries.filter(e => e.id !== entry.id);
+      if (editingId === entry.id) resetEditor();
+      saveEntries();
+      renderEntries();
+      journalStatus.textContent = "Entry deleted.";
+    });
+
+    card.append(heading, date, content, edit, remove);
+    entriesBox.appendChild(card);
+  });
+}
+
+function resetEditor() {
+  editingId = null;
+  journalForm.reset();
+  cancelEdit.hidden = true;
+  document.getElementById("saveEntry").textContent = "💜 Save entry";
+}
+
+journalForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const title = titleInput.value.trim();
+  const text = textInput.value.trim();
+  if (!title || !text) {
+    journalStatus.textContent = "Please enter both a title and a note.";
+    return;
+  }
+  if (editingId) {
+    const entry = entries.find(e => e.id === editingId);
+    if (entry) {
+      entry.title = title;
+      entry.text = text;
+      entry.date = "Updated " + new Date().toLocaleString();
+    }
+  } else {
+    entries.push({
+      id: Date.now().toString() + "-" + Math.random().toString(36).slice(2),
+      title, text, date: new Date().toLocaleString()
+    });
+  }
+  saveEntries();
+  renderEntries();
+  resetEditor();
+  if (storageAvailable) journalStatus.textContent = "Entry saved in this browser! ✨";
+});
+cancelEdit.addEventListener("click", () => {
+  resetEditor();
+  journalStatus.textContent = "Edit cancelled.";
+});
+renderEntries();
+if (!storageAvailable) {
+  journalStatus.textContent = "Saved entries could not be loaded. Browser storage may be unavailable.";
+}
+
+// Back-to-top button
 const topBtn = document.getElementById("topBtn");
 window.addEventListener("scroll", () => {
   topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 topBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({top:0, behavior:"smooth"});
 });
 </script>
 </body>
